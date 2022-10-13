@@ -1,0 +1,12 @@
+.logo {
+  text-align: center;
+  padding: 32px 0;
+  background-color: #fff;
+  line-height: 0;
+}
+
+@include desktop() {
+  .logo {
+    text-align: left;
+  }
+}

@@ -1,0 +1,47 @@
+@import 'select2/dist/css/select2.css';
+
+.select2-container--default .select2-results__option--highlighted[aria-selected] {
+  background-color: $color-primary;
+}
+
+.select2-results__option {
+  font-size: 13px;
+}
+
+.select2-container--disabled {
+  opacity: .7;
+}
+
+.select2-wrapper {
+  display: inline-block;
+
+  .select2 {
+    width: 100% !important;
+
+    .select2-selection {
+      height: 38px;
+      border: 2px solid #fff;
+      border-radius: 4px;
+      background: transparent;
+
+      .select2-selection__rendered {
+        font-size: 13px;
+        line-height: 34px;
+
+        &,
+        .select2-selection__placeholder {
+          color: #fff;
+        }
+      }
+      .select2-selection__arrow {
+        width: 34px;
+        height: 34px;
+
+        b {
+          border-color: #fff transparent transparent transparent !important;
+          border-width: 5px 4px 0 4px !important;
+        }
+      }
+    }
+  }
+}

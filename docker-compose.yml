@@ -1,0 +1,53 @@
+version: "3.7"
+
+services:
+  php:
+    build:
+      args:
+        user: user
+        uid: 1000
+      context: ./docker/php
+    image: alexanevsky-netwrix-test-task
+    container_name: alexanevsky-netwrix-test-task-php
+    restart: unless-stopped
+    working_dir: /var/www/backend
+    volumes:
+      - ./backend:/var/www/backend
+    depends_on:
+      - db
+    networks:
+      - alexanevsky-netwrix-test-task
+
+  db:
+    image: mysql:8.0
+    container_name: alexanevsky-netwrix-test-task-db
+    restart: unless-stopped
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+      MYSQL_DATABASE: alexanevsky_netwrix_test_task
+    volumes:
+      - ./docker/db:/docker-entrypoint-initdb.d
+    networks:
+      - alexanevsky-netwrix-test-task
+
+  nginx:
+    image: nginx:1.22
+    container_name: alexanevsky-netwrix-test-task-nginx
+    restart: unless-stopped
+    ports:
+      - 8000:80
+      - 8001:81
+    volumes:
+      - ./backend:/var/www/backend
+      - ./frontend:/var/www/frontend
+      - ./docker/nginx:/etc/nginx/conf.d/
+    depends_on:
+      - php
+      - db
+    networks:
+      - alexanevsky-netwrix-test-task
+
+networks:
+  alexanevsky-netwrix-test-task:
+    driver: bridge

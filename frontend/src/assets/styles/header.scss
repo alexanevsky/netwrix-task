@@ -1,0 +1,118 @@
+.header {
+  padding: 50px 0 65px;
+  background: #0973ba url('@/assets/images/bg.jpg') center center no-repeat;
+  background-size: cover;
+
+  .header-title,
+  .header-subtitle {
+    text-align: center;
+    color: #fff;
+  }
+
+  .header-title {
+    font-size: 30px;
+    line-height: 40px;
+    font-weight: 700;
+  }
+  .header-subtitle {
+    margin-top: 27px;
+    font-size: 14px;
+    line-height: 2;
+  }
+  .header-fields {
+    margin-top: 40px;
+  }
+  .header-search {
+    position: relative;
+
+    .header-search-input {
+      width: 100%;
+      height: 45px;
+      background: #fff;
+      padding-right: 40px;
+      border: none;
+      border-radius: 4px;
+      font-size: 15px;
+      text-indent: 16px;
+      color: $color-text;
+    }
+    .header-search-button {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      width: 35px;
+      height: 35px;
+      line-height: 35px;
+      text-align: center;
+      color: $color-primary;
+    }
+  }
+  .header-selects {
+    margin-top: 20px;
+
+    .header-selects-region {
+      margin-top: 8px;
+
+      .select2-wrapper:last-child {
+        margin-top: 8px;
+      }
+    }
+    .select2-wrapper {
+      width: 100%;
+    }
+  }
+}
+
+@include desktop() {
+  .header {
+    padding: 120px 0;
+    background-image: url('@/assets/images/bg-large.jpg');
+
+    .header-title {
+      font-size: 46px;
+      line-height: 56px;
+    }
+    .header-subtitle {
+      font-size: 16px;
+    }
+    .header-fields {
+      width: 620px;
+      margin: 48px auto 0;
+    }
+    .header-selects {
+      .header-selects-types,
+      .header-selects-region {
+        display: inline-block;
+        vertical-align: top;
+      }
+      .header-selects-types {
+        width: calc(100% / 3);
+      }
+      .header-selects-region {
+        width: calc((100% / 3) * 2 - 12px);
+        margin-top: 0;
+        margin-left: 12px;
+
+        .select2-wrapper {
+          width: 50% !important;
+
+          &:first-child {
+            .select2-selection {
+              border-top-right-radius: 0;
+              border-bottom-right-radius: 0;
+            }
+          }
+          &:last-child {
+            margin-top: 0;
+
+            .select2-selection {
+              border-left: 0;
+              border-top-left-radius: 0;
+              border-bottom-left-radius: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+}

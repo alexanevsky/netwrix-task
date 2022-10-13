@@ -1,0 +1,12 @@
+.desktop-visible {
+  display: none;
+}
+
+@include desktop() {
+  .desktop-visible {
+    display: block;
+  }
+  .desktop-hidden {
+    display: none;
+  }
+}
